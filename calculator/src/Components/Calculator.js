@@ -34,7 +34,7 @@ class Calculator extends React.Component {
         let x = 0
 
         if(this.state.operator === '+'){
-            x = (this.state.numberOne + this.state.numberTwo)
+            x = parseInt(this.state.numberOne) + parseInt(this.state.numberTwo)
         }
         else if(this.state.operator === '-'){
             x = (this.state.numberOne - this.state.numberTwo)
