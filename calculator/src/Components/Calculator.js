@@ -33,13 +33,13 @@ class Calculator extends React.Component {
         
         let x = 0
 
-        if(this.state.operator === 'plus'){
+        if(this.state.operator === '+'){
             x = (this.state.numberOne + this.state.numberTwo)
         }
-        else if(this.state.operator === 'minus'){
+        else if(this.state.operator === '-'){
             x = (this.state.numberOne - this.state.numberTwo)
         }
-        else if(this.state.operator === 'multiplied by'){
+        else if(this.state.operator === '*'){
             x = (this.state.numberOne * this.state.numberTwo)
         } else{
             x = (this.state.numberOne / this.state.numberTwo)
@@ -59,24 +59,24 @@ class Calculator extends React.Component {
                 </div>
                 
                 <div className='numberpad'>
-                    <button onClick={() => this.setNumber(1)}> 1 </button>
-                    <button onClick={() => this.setNumber(2)}> 2 </button>
-                    <button onClick={() => this.setNumber(3)}> 3 </button>
-                    <button onClick={() => this.setNumber(4)}> 4 </button>
-                    <button onClick={() => this.setNumber(5)}> 5 </button>
-                    <button onClick={() => this.setNumber(6)}> 6 </button>
-                    <button onClick={() => this.setNumber(7)}> 7 </button>
-                    <button onClick={() => this.setNumber(8)}> 8 </button>
-                    <button onClick={() => this.setNumber(9)}> 9 </button>
-                    <button onClick={() => this.setNumber(0)}> 0 </button>
+                    <button name="1" onClick={e => this.setNumber(e.target.name)}> 1 </button>
+                    <button name="2" onClick={e => this.setNumber(e.target.name)}> 2 </button>
+                    <button name="3" onClick={e => this.setNumber(e.target.name)}> 3 </button>
+                    <button name="4" onClick={e => this.setNumber(e.target.name)}> 4 </button>
+                    <button name="5" onClick={e => this.setNumber(e.target.name)}> 5 </button>
+                    <button name="6" onClick={e => this.setNumber(e.target.name)}> 6 </button>
+                    <button name="7" onClick={e => this.setNumber(e.target.name)}> 7 </button>
+                    <button name="8" onClick={e => this.setNumber(e.target.name)}> 8 </button>
+                    <button name="9" onClick={e => this.setNumber(e.target.name)}> 9 </button>
+                    <button name="0" onClick={e => this.setNumber(e.target.name)}> 0 </button>
                 </div>
 
                 <div className='operators'>
-                <button onClick={() => this.setOperator('plus')}> + </button>
-                <button onClick={() => this.setOperator('minus')}> - </button>
-                <button onClick={() => this.setOperator('multiplied by')}> / </button>
-                <button onClick={() => this.setOperator('divided by')}> * </button>
-                <button onClick={() => this.getResult}> = </button>
+                <button name="+" onClick={e => this.setOperator(e.target.name)}> + </button>
+                <button name="-" onClick={e => this.setOperator(e.target.name)}> - </button>
+                <button name="/" onClick={e => this.setOperator(e.target.name)}> / </button>
+                <button name="*" onClick={e => this.setOperator(e.target.name)}> * </button>
+                <button name="=" onClick={e => this.getResult(e.target.name)}> = </button>
                 </div>
             </div>
         )
