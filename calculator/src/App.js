@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react'
 import Calculator from './Components/Calculator';
+import Hooks from './Components/Hooks'
 
 
 class App extends React.Component{
@@ -9,6 +10,7 @@ class App extends React.Component{
     return(
       <div>
         <Calculator/>
+        <Hooks/>
       </div>
     )
   }
