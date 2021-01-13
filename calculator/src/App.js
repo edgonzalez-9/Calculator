@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react'
 import Calculator from './Components/Calculator';
 import Hooks from './Components/Hooks'
+import Timer from './Components/Timer'
 
 
 class App extends React.Component{
@@ -11,6 +12,7 @@ class App extends React.Component{
       <div>
         <Calculator/>
         <Hooks/>
+        <Timer/>
       </div>
     )
   }

@@ -16,6 +16,7 @@ function Hooks(){
     function multiplyNumbers(){
         setTotal(number1 * number2)
     }
+    
     function divideNumbers(){
         setTotal(number1/number2)
     }
