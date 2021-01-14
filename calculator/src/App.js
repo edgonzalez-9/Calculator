@@ -3,7 +3,7 @@ import React from 'react'
 import Calculator from './Components/Calculator';
 import Hooks from './Components/Hooks'
 import Timer from './Components/Timer'
-
+import Countdown from './Components/Countdown'
 
 class App extends React.Component{
 
@@ -12,6 +12,7 @@ class App extends React.Component{
       <div>
         <Calculator/>
         <Hooks/>
+        <Countdown/>
         <Timer/>
       </div>
     )

@@ -1,54 +1,53 @@
-import React, { useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 
-function Timer(){
 
-    const calculateTimeLeft = () => {
-        let year = new Date().getFullYear(); 
-        let difference = +new Date(`02/14/${year}`) - +new Date()
-        let timeLeft = {};
+const Timer = () => {
 
-        if (difference > 0) {
-            timeLeft = {
-                days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-                hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-                minutes: Math.floor((difference / 1000 / 60) % 60),
-                seconds: Math.floor((difference / 1000) % 60)
-            };
-        }
-
-        return timeLeft
-    };
-
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+    const [second, setSecond] = useState("00")
+    const [minute, setMinute] = useState("00")
+    const [isActive, setIsActive] = useState(false);
+    const [counter, setCounter] = useState(0)
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setTimeLeft(calculateTimeLeft());
-        }, 1000);
-        return() => clearTimeout(timer)
-    })
+        let intervalId;
 
-    const timerComponents = [];
+        if (isActive) {
+            intervalId = setInterval(() => {
+                const secondCounter = counter % 60;
+                const minuteCounter = Math.floor(counter/60);
 
-    Object.keys(timeLeft).forEach((interval) => {
-        if(!timeLeft[interval]){
-            return;
+                const computedSecond = String(secondCounter).length === 1 ? `0${secondCounter}` : secondCounter
+                const computedMinute = String(minuteCounter).length === 1 ? `0${minuteCounter}` : minuteCounter;
+
+                setSecond(computedSecond);
+                setMinute(computedMinute)
+
+                setCounter(counter => counter + 1);
+
+            }, 1000)
         }
 
-        timerComponents.push(
-            <span>
-                {timeLeft[interval]} {interval} {" "}
-            </span>
-        );
-    });
+        return () => clearInterval(intervalId);
+    }, [isActive, counter])
 
-
+    function stopTimer() {
+        setIsActive(false);
+        setCounter(0);
+        setSecond("00");
+        setMinute("00")
+    }
 
     return(
-        <div>
-            <h1>Daisy's Birthday Countdown!</h1>
-            <h2>With React Hooks!</h2>
-            {timerComponents.length ? timerComponents : <span> Time's up!</span>}
+        <div className="container">
+            <div className="time">
+                <span className="minute">{minute}</span>
+                <span>:</span>
+                <span className="second">{second}</span>
+            </div>
+            <div className="buttons">
+                <button onClick={() => setIsActive(!isActive)} className="start">{isActive ? "Pause" : "Start"} </button>
+                <button onClick={stopTimer} className="reset">Reset</button>
+            </div>
         </div>
     )
 }
